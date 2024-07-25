@@ -57,7 +57,7 @@ const Header = () => {
             onMouseEnter={() => setIsMenu(true)}
             onMouseLeave={() => setIsMenu(false)}
             className='flex items-center ml-auto cursor-pointer gap-2 relative'>
-            <img src={user?.user?.imageURL} className='w-12 h-12 min-w-[44px] object-cover rounded-full shadow-lg' alt="" noreferrer />
+            <img src={user?.user?.imageURL} className='w-12 h-12 min-w-[44px] object-cover rounded-full shadow-lg' alt="" />
             <div className='flex flex-col'>
                 <p className='text-textColor text-lg hover:text-headingColor font-semibold'>{user?.user?.name}</p>
                 <p className='flex items-center gap-2 text-xs text-gray-500 font-normal'>Premium Member.<FaCrown className='text-sm -ml-1 text-yellow-500'/></p>
@@ -76,7 +76,24 @@ const Header = () => {
                                 </p>
                             </NavLink>
                             <p className='text-base text-textColor hover:font-semibold duration-150 transition-all ease-in-out'>My Favourites</p>
+                            
                             <hr />
+
+                            {
+                                user?.user?.role === "admin" && (
+                                <>
+                                    <NavLink to={'/dashboard/home'}>
+                                        <p className='text-base text-textColor hover:font-semibold duration-150 transition-all ease-in-out'>
+                                            Dashboard
+                                        </p>
+                                    </NavLink>
+
+                                    <hr />
+
+                                </>
+                                )
+                            }
+
                             <p className='text-base text-textColor hover:font-semibold duration-150 transition-all ease-in-out' onClick={logOut}>Sign Out</p>
                     </motion.div>
                 )}
